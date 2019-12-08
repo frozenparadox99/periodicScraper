@@ -17,7 +17,7 @@ app.use(cors());
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(0, 6)];
 rule.hour = 11;
-rule.minute = 08;
+rule.minute = 20;
 let x = {};
 
 var j = schedule.scheduleJob(rule, () => {
