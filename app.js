@@ -19,6 +19,11 @@ rule.dayOfWeek = [0, new schedule.Range(0, 6)];
 rule.hour = 11;
 rule.minute = 20;
 let x = {};
+axios.get(link).then(function(response) {
+  // handle success
+  console.log(response);
+  x = response;
+});
 
 var j = schedule.scheduleJob(rule, () => {
   axios.get(link).then(function(response) {
