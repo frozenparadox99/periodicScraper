@@ -8,8 +8,7 @@ const cors = require("cors");
 
 const app = express();
 
-const link =
-  "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBbuowm3VW22ZC5U3VS2trjCJHMhLiYQ6c&channelId=UCwW9nPcEM2wGfsa06LTYlFg&part=snippet,id&order=date&maxResults=50";
+const link = process.env.LINK;
 
 app.use(morgan("dev"));
 app.use(express.json());
