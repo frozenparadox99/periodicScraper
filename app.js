@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const schedule = require("node-schedule");
@@ -38,7 +39,7 @@ var j = schedule.scheduleJob(rule, () => {
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json(x.data);
   fs.readFile(`${__dirname}/message.json`, (err, data) => {
     if (err) throw err;
@@ -46,8 +47,10 @@ app.get("/", (req, res) => {
   });
 });
 
-port = 3000 || process.env.PORT;
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
-app.listen(port, (req, res) => {
-  console.log(`Server running at port : ${port}`);
+app.listen(process.env.PORT || 4000, function() {
+  console.log("Your node js server is running");
 });
